@@ -1,0 +1,26 @@
+.admin_login_form{
+    background: #242424e9;
+    color: aliceblue;
+    width: 250px;
+    padding: 10px;
+    border-radius: 8px;
+}
+.Admin{
+    font-weight: bolder;
+    margin-bottom: 30px;
+    
+}
+.adminLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.body{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    background: #757272;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/static/styles/adminpanel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="body">
+       <div class="head">
+
+
+            <div class="name">Admin Panel</div>
+
+
+          <div class="search">
+              <form action="/adminpanel/search" method="post"  class="row g-3">
+              <div class="col-auto">
+               
+                <input type="text" name="search" class="form-control" id="inputPassword2" placeholder="Search">
+              </div>
+              <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3"><i class="fa-solid fa-magnifying-glass"></i></button>
+              </div>
+             
+            </form>
+          </div>
+          {{#if refresh}}
+             <div class="border border-5 rounded-pill p-2"><a class="text-light text-decoration-none fw-bold" href="/adminpanel">Refresh &nbsp;&nbsp;<i class="fa-solid fa-arrows-rotate fa-spin-pulse fa-xl"></i></a></div>
+          {{/if}}
+
+              <div >
+                  <button class="button" ><a class="a" href="/adminlogin">Sign-Out</a></button>
+             </div>
+              <div>
+                <button class="button"><a class="a" href="/adminpanel/adduser">Add New User</a></button>
+              </div>
+
+      </div>
+
+
+        
+          <div class="subBody">
+                <table class="table table-dark table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">No.</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Password</th>
+                      <th scope="col">Edit</th>
+                      <th scope="col">Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody >
+                    {{#each userdata}}
+                    <tr>
+                      <th scope="row">{{@index}}</th>
+                      <td>{{this.username}}</td>
+                      <td>{{this.email}}</td>
+                      <td>{{this.password}}</td>
+                      <td><a href="/adminpanel/edit/{{this._id}}"><i class="fa-solid fa-pen-to-square fa-beat fa-xl" style="color: #c0c9d3;"></i></a></td>
+                      <td><a href="/adminpanel/delete/{{this._id}}" onclick="return confirm(' Are Want To Delete the {{this.username}} ?')"><i class="fa-solid fa-trash fa-beat fa-xl" style="color: #9c9c9c;"></i></i></i></a></td>
+                    </tr>
+                    {{/each}}
+                  
+                  </tbody>
+                </table>
+            </div>
+
+
+       </div>
+</body>
+</html>
